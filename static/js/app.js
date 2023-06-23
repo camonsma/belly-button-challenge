@@ -13,7 +13,6 @@ const fullDataSet = "https://2u-data-curriculum-team.s3.amazonaws.com/dataviz-cl
 //Similar to class 
 // Fetch the JSON data and console log it  
 
-
 // only to confirm data was read completely
  function buildCharts(sample)
  {
@@ -60,7 +59,6 @@ Use sample_values for the marker size.
 Use otu_ids for the marker colors.
 Use otu_labels for the text values.
 */
-alert(sample);
 //Use sample_values as the values for the bar chart.
      let sample_values = data.samples;
      let temp = sample_values.filter(obj=>obj.id==sample)
@@ -97,7 +95,7 @@ alert(sample);
 /////////////////////////////////////////////////////////////////////////////////////
    function buildGageCharts(sample)
    {
-    d3.json(fullDataSet).then(function(data) {
+ d3.json(fullDataSet).then(function(data) {
  //Use sample_values as the values for the bar chart.
  let sample_values = data.metadata;
 // console.log(data);
@@ -111,15 +109,20 @@ alert(sample);
  let loc = metadata.location;
  let bbt = metadata.bbtype;
  let fre = metadata.wfreq;
+ let panelBody = d3.select(".panel-body");
 
-let panelBody = d3.select(".panel-body");
-panelBody.append("h3").text(`id: ${id}`);
-panelBody.append("h3").text(`ethnicity: ${eth}`);
-panelBody.append("h3").text(`gender: ${sex}`);
-panelBody.append("h3").text(`age: ${age}`);
-panelBody.append("h3").text(`location: ${loc}`);
-panelBody.append("h3").text(`bbtype: ${bbt}`);
-panelBody.append("h3").text(`wfreq: ${fre}`);
+//  for (i=0;i < 8;i++)
+// {
+// panelBody.remove("h3");
+// };
+   panelBody.append("h3").text(`id: ${id}`);
+   panelBody.append("h3").text(`ethnicity: ${eth}`);
+   panelBody.append("h3").text(`gender: ${sex}`);
+   panelBody.append("h3").text(`age: ${age}`);
+   panelBody.append("h3").text(`location: ${loc}`);
+   panelBody.append("h3").text(`bbtype: ${bbt}`);
+   panelBody.append("h3").text(`wfreq: ${fre}`);
+
      });
     };
 ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -155,7 +158,7 @@ function optionChanged(value)
  console.log(iValue);
   buildCharts(iValue);
   buildPopCharts(iValue);
- //buildGageCharts(iValue);
+  buildGageCharts(iValue);
  //buildOptions();
 
 };
